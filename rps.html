@@ -29,7 +29,6 @@ background-color:orange;
 <body>
 
 <center>
-
 <button id="Rock" onclick="playerChoseRock()">Rock</button>
 <button id="Paper" onclick="playerChosePaper()">Paper</button>
 <button id="Scissors" onclick="playerChoseScissors()">Scissors</button>
@@ -38,6 +37,7 @@ background-color:orange;
 
 </body>
 <script>
+// Computer chooses his move
 var computerChoice;
 var ccnum = Math.floor(Math.random() * 3);
 
@@ -51,6 +51,7 @@ if (ccnum == 2) {
 computerChoice = "Scissors";
 }
 
+// Results if player chose rock
 function playerChoseRock() {
 
 if (computerChoice == "Rock") {
@@ -73,6 +74,7 @@ location.reload();
 
 }
 
+// Results if player chose paper
 function playerChosePaper() {
 
 if (computerChoice == "Paper") {
@@ -92,6 +94,7 @@ alert("Player won!")
 
 }
 
+// Results if player chose scissors
 function playerChoseScissors() {
 
 if (computerChoice == "Scissors") {
