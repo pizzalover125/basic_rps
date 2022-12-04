@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rock Paper Scissors</title>
+
+<style>
+button {
+width:33%;
+height:20em;
+margin: auto;
+}
+
+#Rock {
+background-color:grey;
+}
+
+#Paper {
+background-color:white;
+}
+
+#Scissors {
+background-color:orange;
+}
+
+</style>
+
+</head>
+<body>
+
+<center>
+
+<button id="Rock" onclick="playerChoseRock()">Rock</button>
+<button id="Paper" onclick="playerChosePaper()">Paper</button>
+<button id="Scissors" onclick="playerChoseScissors()">Scissors</button>
+</center>
+
+
+</body>
+<script>
+var computerChoice;
+var ccnum = Math.floor(Math.random() * 3);
+
+if (ccnum == 0) {
+computerChoice = "Rock";
+}
+if (ccnum == 1) {
+computerChoice = "Paper";
+}
+if (ccnum == 2) {
+computerChoice = "Scissors";
+}
+
+function playerChoseRock() {
+
+if (computerChoice == "Rock") {
+alert("Computer chose rock.")
+alert("Tie!")
+location.reload();
+}
+
+if (computerChoice == "Paper") {
+alert("Computer chose paper.")
+alert("Player lost.")
+location.reload();
+}
+
+if (computerChoice == "Scissors") {
+alert("Computer chose scissors.")
+alert("Player won!")
+location.reload();
+}
+
+}
+
+function playerChosePaper() {
+
+if (computerChoice == "Paper") {
+alert("Computer chose paper.")
+alert("Tie!")
+}
+
+if (computerChoice == "Scissors") {
+alert("Computer chose scissors.")
+alert("Player lost.")
+}
+
+if (computerChoice == "Rock") {
+alert("Computer chose rock.")
+alert("Player won!")
+}
+
+}
+
+function playerChoseScissors() {
+
+if (computerChoice == "Scissors") {
+alert("Computer chose scissors.")
+alert("Tie!")
+}
+
+if (computerChoice == "Rock") {
+alert("Computer chose rock.")
+alert("Player lost.")
+}
+
+if (computerChoice == "Paper") {
+alert("Computer chose paper.")
+alert("Player won!")
+}
+
+}
+
+
+</script>
+</html>
