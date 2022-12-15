@@ -15,35 +15,101 @@ width:100%;
 }
 
 #Rock {
-background-image:url("http://www.clker.com/cliparts/0/b/8/9/1216137609217389073Angelo_Gemmi_stone.svg.med.png");
+background-image:url("https://img.freepik.com/free-photo/closeup-shot-gray-rough-concrete-background_181624-11766.jpg?w=2000");
 background-size: 165px;
 background-color:grey;
 }
 
 #Paper {
-background-image:url("http://www.clker.com/cliparts/8/a/4/5/119498399239274176paper_01.svg.med.png");
+background-image:url("https://img.freepik.com/free-photo/design-space-paper-textured-background_53876-42312.jpg");
 background-size:145px;
 background-color:blue;
 }
 
 #Scissors {
-background-image:url("http://www.clker.com/cliparts/9/5/5/c/1195421917234993363TheresaKnott_scissors_open.svg.med.png");
+background-image:url("https://previews.123rf.com/images/siaminka/siaminka1706/siaminka170600009/80556886-seamless-background-stationery-scissors-cut-on-the-dotted-line-black-scissors-on-a-white-background-.jpg");
 background-size:485px;
 background-color:orange;
 }
 
+.modal {
+display: none;
+position: fixed; 
+padding-top: 50px;
+left: 0; 
+top: 0;
+width: 100%;
+height: 100%; 
+background-color: rgb(0, 0, 0);
+background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+position: relative; 
+background-color: white;
+padding: 20px; 
+margin: auto; 
+width: 75%;  
+-webkit-animation-name: animatetop;
+-webkit-animation-duration: 0.4s;
+animation-name: animatetop;
+animation-duration: 0.4s
+}
+.close-btn {
+float: right; 
+color: lightgray; 
+font-size: 24px;  
+font-weight: bold;
+}
+.close-btn:hover {
+color: darkgray;
+}
+@-webkit-keyframes animatetop {
+from {top:-300px; opacity:0} 
+to {top:0; opacity:1}
+}
+@keyframes animatetop {
+from {top:-300px; opacity:0}
+to {top:0; opacity:1}
+}
+
+.float{
+position:fixed;
+width:60px;
+height:60px;
+bottom:40px;
+right:40px;
+background-color:#0C9;
+color:#FFF;
+border-radius:50px;
+text-align:center;
+box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+margin-top:22px;
+}
 </style>
 
 </head>
-<body>
+<body onload="showModal()">
 
 <center>
+<div class="modal">
+<div class="modal-content">
+<span class="close-btn">&times;</span>
+<p>this is the text inside the modal</p>
+</div>
+</div>
 
 <div>
 <button id="Rock" onclick="playerChoseRock()">Rock</button>
 <button id="Paper" onclick="playerChosePaper()">Paper</button>
 <button id="Scissors" onclick="playerChoseScissors()">Scissors</button>
 <div>
+
+<a href="#" class="float" id="openBtn">
+<i class="fa fa-plus my-float"></i>
+</a>
 
 </center>
 
@@ -70,7 +136,7 @@ function playerChoseRock() {
 if (computerChoice == "Rock") {
 alert("Computer chose rock.")
 alert("Tie!")
-location.reload(); // This resets the computer's choice
+location.reload();
 }
 
 if (computerChoice == "Paper") {
@@ -93,16 +159,19 @@ function playerChosePaper() {
 if (computerChoice == "Paper") {
 alert("Computer chose paper.")
 alert("Tie!")
+location.reload();
 }
 
 if (computerChoice == "Scissors") {
 alert("Computer chose scissors.")
 alert("Player lost.")
+location.reload();
 }
 
 if (computerChoice == "Rock") {
 alert("Computer chose rock.")
 alert("Player won!")
+location.reload();
 }
 
 }
@@ -113,20 +182,36 @@ function playerChoseScissors() {
 if (computerChoice == "Scissors") {
 alert("Computer chose scissors.")
 alert("Tie!")
+location.reload();
 }
 
 if (computerChoice == "Rock") {
 alert("Computer chose rock.")
 alert("Player lost.")
+location.reload();
 }
 
 if (computerChoice == "Paper") {
 alert("Computer chose paper.")
 alert("Player won!")
+location.reload();
 }
 
 }
 
+let modal = document.querySelector(".modal")
+let closeBtn = document.querySelector(".close-btn")
+openBtn.onclick = function(){
+modal.style.display = "block"
+}
+closeBtn.onclick = function(){
+modal.style.display = "none"
+}
+window.onclick = function(e){
+if(e.target == modal){
+modal.style.display = "none"
+}
 
+}
 </script>
 </html>
