@@ -17,19 +17,16 @@ width:100%;
 #Rock {
 background-image:url("https://img.freepik.com/free-photo/closeup-shot-gray-rough-concrete-background_181624-11766.jpg?w=2000");
 background-size: 165px;
-background-color:grey;
 }
 
 #Paper {
 background-image:url("https://img.freepik.com/free-photo/design-space-paper-textured-background_53876-42312.jpg");
 background-size:145px;
-background-color:blue;
 }
 
 #Scissors {
 background-image:url("https://previews.123rf.com/images/siaminka/siaminka1706/siaminka170600009/80556886-seamless-background-stationery-scissors-cut-on-the-dotted-line-black-scissors-on-a-white-background-.jpg");
 background-size:485px;
-background-color:orange;
 }
 
 .modal {
@@ -71,7 +68,6 @@ to {top:0; opacity:1}
 from {top:-300px; opacity:0}
 to {top:0; opacity:1}
 }
-
 .float{
 position:fixed;
 width:60px;
@@ -83,6 +79,9 @@ color:#FFF;
 border-radius:50px;
 text-align:center;
 box-shadow: 2px 2px 3px #999;
+font-size:2em;
+text-decoration: none;
+display: inline-block;	
 }
 
 .my-float{
@@ -97,7 +96,7 @@ margin-top:22px;
 <div class="modal">
 <div class="modal-content">
 <span class="close-btn">&times;</span>
-<p>this is the text inside the modal</p>
+<p>Rock, Paper, and Scissors is a fun child game entierly based on luck. The basic gist is that rock beats scissors, paper beats rock, and rock beats scissors.</p>
 </div>
 </div>
 
@@ -108,7 +107,7 @@ margin-top:22px;
 <div>
 
 <a href="#" class="float" id="openBtn">
-<i class="fa fa-plus my-float"></i>
+?
 </a>
 
 </center>
