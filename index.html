@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock! Paper! Scissors!</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: white;
+            border: 5px solid black;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+            left: 2px;
+        }
+
+        .button:hover:enabled {background-color: whitesmoke}
+
+        .button:active:enabled {
+            background-color: whitesmoke;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .button:disabled {
+            background-color: lightgrey;
+        }
+
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        .top {
+            margin: 0;
+            position: absolute;
+            top: 15%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        .bottom {
+            margin: 0;
+            position: absolute;
+            top: 85%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        #directions {
+            font-size: 2em;
+            text-align: center;
+            position: absolute;
+            bottom: 80%;
+            left: 35%;
+            right: 35%;
+        } 
+
+        #player_img_choice {
+            margin: 0px;
+            position: absolute;
+            left: 35%;
+            top: 50%;
+            bottom: 50%;
+        }
+
+        #computer_img_choice {
+            position: absolute;
+            right: 35%;
+            top: 50%;
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+        }
+
+        #retry {
+            padding: 16px;
+            position: absolute;
+            bottom: 80%;
+            left: 90%;
+        }
+
+        #version {
+            padding: 8px;
+            position: absolute;
+            top: 90%;
+            left: 90%;
+        }
+    </style>
+</head>
+<body onload="gameloop()">
+    <h1 id="directions">Pick your choice</h1>
+    <div class="top">
+        <button class="button" id="rock"><img src="img/rockleft.png" class = "bimg"></button><br>
+    </div>
+    <div class="vertical-center">
+        <button class="button" id="paper"><img src="img/paperleft.png" class = "bimg"></button><br>
+    </div>
+    <div class="bottom">
+        <button class="button" id="scissors"><img src="img/scissorsleft.png" class = "bimg"></button><br>
+    </div>
+    <img id="player_img_choice">
+    <img id="computer_img_choice">
+
+    <button class="button" style="color: black;" id="retry">Retry</button>
+
+    <p id="version">V.2</p>
+</body>
+<script>
+    console.log("100% code by pizzalover125");
+    let player_choice = -1;
+    let player_img = "";
+    let comp_img = "";
+    
+    function disable_all() {
+        $("#rock").attr('disabled', true);
+        $("#paper").attr('disabled', true);
+        $("#scissors").attr('disabled', true);
+    }
+
+    function loadCompImg() {
+        if (compChoice === 0) {
+            comp_img = "img/rockleft.png"
+            $("#computer_img_choice").attr('src', comp_img)
+        } 
+        
+        if (compChoice === 1) {
+            comp_img = "img/paperleft.png"
+            $("#computer_img_choice").attr('src', comp_img)
+        }
+
+        if (compChoice === 2) {
+            comp_img = "img/scissorsleft.png"
+            $("#computer_img_choice").attr('src', comp_img)
+        }
+    }
+
+    function chooseWinner() {
+        if (compChoice === player_choice) {
+                $("h1").text("Draw!");
+        } else {
+            if (compChoice === 0) {
+                if (player_choice === 1) {
+                    $("h1").text("You Won!");
+                } else {
+                    $("h1").text("You Lost!");
+                }
+            }
+            if (compChoice === 1) {
+                if (player_choice === 0) {
+                    $("h1").text("You Lost!");
+                } else {
+                    $("h1").text("You Won!");
+                }
+            }
+            if (compChoice === 2) {
+                if (player_choice === 1) {
+                    $("h1").text("You Lost!");
+                } else {
+                    $("h1").text("You Won!");
+                }
+            }
+        }
+    }
+
+    function gameloop() {
+        $("#retry").hide()
+        $("#rock").on("click", function() {
+            player_choice = 0;
+            player_img = "img/rockleft.png";
+            compChoice = Math.floor(Math.random() * 3);
+
+            $("#player_img_choice").attr('src', player_img)
+            
+            disable_all();
+            loadCompImg();
+            chooseWinner();
+            $("#retry").show();
+        });
+
+        $("#paper").on("click", function() {
+            player_choice = 1;
+            player_img = "img/paperleft.png";
+            compChoice = Math.floor(Math.random() * 3);
+
+            $("#player_img_choice").attr('src', player_img)
+            
+            disable_all();
+            loadCompImg();
+            chooseWinner();
+            $("#retry").show();
+        });
+
+        $("#scissors").on("click", function() {
+            player_choice = 2;
+            player_img = "img/scissorsleft.png";
+            compChoice = Math.floor(Math.random() * 3);
+
+            $("#player_img_choice").attr('src', player_img)
+
+            disable_all();
+            loadCompImg();
+            chooseWinner();
+            $("#retry").show();
+        });
+
+        $("#retry").on("click", function() {
+            location.reload();
+        });
+    }
+</script>
+</html>
